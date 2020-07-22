@@ -7,13 +7,14 @@
 
 ## Branch Requirements
 
+ * 4.6 -> SilverStripe 4.0.x
  * 3.1 -> SilverStripe 3.1.x
  * 3.0 -> SilverStripe 3.0.x
  * 2.4 -> SilverStripe 2.4.x
 
 ## Overview ##
 
-The module provides functionality for displaying DataObjects managed via ModelAdmin to appear as though they were 
+The module provides functionality for displaying DataObjects managed via ModelAdmin to appear as though they were
 full Pages on the front end of the site. It includes the option to enable versioning, allowing Draft and Published versions of the DataObject.
 
 Searching has been removed for now but will hopefully be added back in future as a standalone module. We would recommend either Lucene or Solr modules for DataObject searchability.
