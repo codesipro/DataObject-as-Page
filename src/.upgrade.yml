@@ -7,4 +7,4 @@ mappings:
   DataObjectAsPageAdmin: Codesipro\DataObjectAsPage\ModelAdmin\DataObjectAsPageAdmin
   ModelAdminHtmlEditorField_Toolbar: Codesipro\DataObjectAsPage\ModelAdmin\ModelAdminHtmlEditorField_Toolbar
   DataObjectAsPageHolder: Codesipro\DataObjectAsPage\Pages\DataObjectAsPageHolder
-  DataObjectAsPageHolder_Controller: Codesipro\DataObjectAsPage\Pages\DataObjectAsPageHolder_Controller
+  DataObjectAsPageHolderController: Codesipro\DataObjectAsPage\Pages\DataObjectAsPageHolderController
