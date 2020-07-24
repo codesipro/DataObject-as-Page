@@ -33,6 +33,8 @@ class DataObjectAsPage extends DataObject
     /**
      * @var define the listing page class name
      */
+    private static $table_name = 'DataObjectAsPage';
+
     private static $listing_page_class = DataObjectAsPageHolder::class;
 
     private static $db = [

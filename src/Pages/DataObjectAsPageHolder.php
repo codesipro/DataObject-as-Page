@@ -9,6 +9,8 @@ use Silverstripe\Control\Controller;
 
 class DataObjectAsPageHolder extends \Page
 {
+    private static $table_name = 'DataObjectAsPageHolder';
+
     private static $hide_ancestor = DataObjectAsPageHolder::class;
 
     private static $db = [
