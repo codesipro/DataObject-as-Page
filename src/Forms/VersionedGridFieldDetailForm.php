@@ -1,4 +1,21 @@
 <?php
+
+namespace Codesipro\DataObjectAsPage\Forms;
+
+use GridFieldDetailForm;
+use GridFieldDetailForm_ItemRequest;
+use DB;
+use ClassInfo;
+use CompositeField;
+use FieldList;
+use FormAction;
+use LiteralField;
+use Security;
+use Controller;
+use Versioned;
+use ValidationException;
+use DataObject;
+
 /**
  * VersionedGridFieldDetailForm & VersionedGridFieldDetailForm_ItemRequest
  * Allows managing versioned objects through gridfield.

@@ -1,5 +1,12 @@
 <?php
 
+namespace Codesipro\DataObjectAsPage\Forms;
+
+use GridFieldDeleteAction;
+use GridField;
+use ValidationException;
+
+
 
 class VersionedGridFieldDeleteAction extends GridFieldDeleteAction
 {

@@ -1,5 +1,19 @@
 <?php
 
+namespace Codesipro\DataObjectAsPage\Pages;
+
+use Page;
+use HeaderField;
+use CheckboxField;
+use NumericField;
+use Controller;
+use Page_Controller;
+use PaginatedList;
+use Convert;
+use ArrayData;
+use Security;
+
+
 class DataObjectAsPageHolder extends Page 
 {
 	private static $hide_ancestor = 'DataObjectAsPageHolder';

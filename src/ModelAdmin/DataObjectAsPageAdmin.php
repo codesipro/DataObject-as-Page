@@ -1,5 +1,15 @@
 <?php
 
+namespace Codesipro\DataObjectAsPage\ModelAdmin;
+
+use ModelAdmin;
+use Versioned;
+use Requirements;
+use VersionedGridFieldDeleteAction;
+use HtmlEditorField_Toolbar;
+use Controller;
+
+
 class DataObjectAsPageAdmin extends ModelAdmin 
 {
 	

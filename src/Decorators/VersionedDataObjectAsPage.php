@@ -1,5 +1,10 @@
 <?php
 
+namespace Codesipro\DataObjectAsPage\Decorators;
+
+use DataExtension;
+
+
 class VersionedDataObjectAsPage extends DataExtension{
 	
 	private static $summary_fields = array(

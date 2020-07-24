@@ -1,0 +1,10 @@
+mappings:
+  DataObjectAsPage: Codesipro\DataObjectAsPage\DataObjects\DataObjectAsPage
+  VersionedDataObjectAsPage: Codesipro\DataObjectAsPage\Decorators\VersionedDataObjectAsPage
+  VersionedGridFieldDeleteAction: Codesipro\DataObjectAsPage\Forms\VersionedGridFieldDeleteAction
+  VersionedGridFieldDetailForm: Codesipro\DataObjectAsPage\Forms\VersionedGridFieldDetailForm
+  VersionedGridFieldDetailForm_ItemRequest: Codesipro\DataObjectAsPage\Forms\VersionedGridFieldDetailForm_ItemRequest
+  DataObjectAsPageAdmin: Codesipro\DataObjectAsPage\ModelAdmin\DataObjectAsPageAdmin
+  ModelAdminHtmlEditorField_Toolbar: Codesipro\DataObjectAsPage\ModelAdmin\ModelAdminHtmlEditorField_Toolbar
+  DataObjectAsPageHolder: Codesipro\DataObjectAsPage\Pages\DataObjectAsPageHolder
+  DataObjectAsPageHolder_Controller: Codesipro\DataObjectAsPage\Pages\DataObjectAsPageHolder_Controller

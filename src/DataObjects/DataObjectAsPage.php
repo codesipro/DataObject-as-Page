@@ -1,4 +1,27 @@
 <?php
+
+namespace Codesipro\DataObjectAsPage\DataObjects;
+
+use DataObject;
+use Member;
+use Versioned;
+use Permission;
+use Controller;
+use LiteralField;
+use TextField;
+use SiteTreeURLSegmentField;
+use Director;
+use HTMLEditorField;
+use ToggleCompositeField;
+use TextareaField;
+use SSViewer;
+use ArrayData;
+use ArrayList;
+use Convert;
+use ContentNegotiator;
+use DB;
+use URLSegmentFilter;
+
 /*
  * Base class for DataObjects that behave like pages
  * 
