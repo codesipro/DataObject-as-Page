@@ -6,11 +6,11 @@ use Silverstripe\ORM\DataExtension;
 
 class VersionedDataObjectAsPage extends DataExtension{
 
-	private static $summary_fields = array(
+	private static $summary_fields = [
 		'Status' => 'Status'
-	);
+    ];
 
-	private static $versioning = array(
+	private static $versioning = [
 		"Stage",  "Live"
-	);
+    ];
 }

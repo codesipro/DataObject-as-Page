@@ -35,30 +35,35 @@ class DataObjectAsPage extends DataObject
      */
     private static $listing_page_class = DataObjectAsPageHolder::class;
 
-    private static $db = array (
+    private static $db = [
         'URLSegment' => 'Varchar(100)',
         'Title' => 'Varchar(255)',
         'MetaTitle' => 'Varchar(255)',
         'MetaDescription' => 'Varchar(255)',
         'Content' => 'HTMLText'
-    );
+    ];
 
-    private static $defaults = array(
+    private static $defaults = [
         'Title'=>'New Item',
         'URLSegment' => 'new-item'
-    );
+    ];
 
-    private static $summary_fields = array(
+    private static $summary_fields = [
         'Title' => 'Title',
         'URLSegment' => 'URLSegment'
-    );
+    ];
 
-    private static $indexes = array(
-        "URLSegment" => array(
+    private static $searchable_fields = [
+        'Title',
+        'URLSegment'
+    ];
+
+    private static $indexes = [
+        'URLSegment' => [
             'type' => 'unique',
-            'value' => 'URLSegment'
-        )
-    );
+            'columns' => 'URLSegment'
+        ]
+    ];
 
     private static $default_sort = 'Created DESC';
 

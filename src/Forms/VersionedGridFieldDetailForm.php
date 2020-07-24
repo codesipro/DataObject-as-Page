@@ -30,11 +30,11 @@ class VersionedGridFieldDetailForm extends GridFieldDetailForm {
 
 class VersionedGridFieldDetailForm_ItemRequest extends GridFieldDetailForm_ItemRequest {
 
-	private static $allowed_actions = array(
+	private static $allowed_actions = [
 		'edit',
 		'view',
 		'ItemEditForm'
-	);
+    ];
 
 	function isNew() {
 		/**
@@ -309,11 +309,6 @@ class VersionedGridFieldDetailForm_ItemRequest extends GridFieldDetailForm_ItemR
 	function doDeleteFromLive() {
 		return $this->doUnpublish();
 	}
-
-
-
-
-
 
 
 	/**

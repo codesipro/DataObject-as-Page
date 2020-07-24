@@ -11,17 +11,17 @@ class DataObjectAsPageHolder extends \Page
 {
     private static $hide_ancestor = DataObjectAsPageHolder::class;
 
-    private static $db = array(
+    private static $db = [
         'ItemsPerPage' => 'Int',
         'ItemsAsChildren' => 'Boolean',
         'Paginate' => 'Boolean'
-    );
+    ];
 
-    private static $defaults = array(
+    private static $defaults = [
         'ItemsPerPage' => 10,
         'Paginate' => true,
         'ItemsAsChildren' => false
-    );
+    ];
 
     public function getSettingsFields()
     {
