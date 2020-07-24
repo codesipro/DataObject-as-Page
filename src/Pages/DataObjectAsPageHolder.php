@@ -1,6 +1,6 @@
 <?php
 
-namespace Codesipro\DataObjectAsPage\Pages;
+namespace arambalakjian\DataObjectAsPage\Pages;
 
 use Silverstripe\Forms\HeaderField;
 use Silverstripe\Forms\CheckboxField;

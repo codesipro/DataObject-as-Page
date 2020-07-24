@@ -1,6 +1,6 @@
 <?php
 
-namespace Codesipro\DataObjectAsPage\Forms;
+namespace arambalakjian\DataObjectAsPage\Forms;
 
 use Silverstripe\Forms\Gridfield\GridFieldDetailForm;
 use Silverstripe\Forms\Gridfield\GridFieldDetailForm_ItemRequest;

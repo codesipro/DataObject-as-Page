@@ -1,12 +1,12 @@
 <?php
 
-namespace Codesipro\DataObjectAsPage\Pages;
+namespace arambalakjian\DataObjectAsPage\Pages;
 
 use Silverstripe\ORM\PaginatedList;
 use Silverstripe\Core\Convert;
 use Silverstripe\Security\Security;
 use Silverstripe\View\ArrayData;
-use Codesipro\DataObjectAsPage\DataObjects\DataObjectAsPage;
+use arambalakjian\DataObjectAsPage\DataObjects\DataObjectAsPage;
 
 
 class DataObjectAsPageHolderController extends \PageController

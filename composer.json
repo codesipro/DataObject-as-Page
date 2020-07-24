@@ -1,5 +1,5 @@
 {
-	"name": "codesipro/dataobjectaspage",
+	"name": "arambalakjian/dataobjectaspage",
 	"replace": {
     	"silverstripe/dataobjectaspage": "*"
     },
@@ -21,7 +21,7 @@
 
 	"autoload": {
         "psr-4": {
-            "Codesipro\\DataObjectAsPage\\": "src/"
+            "arambalakjian\\DataObjectAsPage\\": "src/"
         }
     }
 }

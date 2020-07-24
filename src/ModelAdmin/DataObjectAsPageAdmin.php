@@ -1,15 +1,15 @@
 <?php
 
-namespace Codesipro\DataObjectAsPage\ModelAdmin;
+namespace arambalakjian\DataObjectAsPage\ModelAdmin;
 
 use Silverstripe\Admin\ModelAdmin;
 use Silverstripe\Versioned\Versioned;
 use Silverstripe\View\Requirements;
-use Codesipro\DataObjectAsPage\Forms\VersionedGridFieldDeleteAction;
+use arambalakjian\DataObjectAsPage\Forms\VersionedGridFieldDeleteAction;
 use Silverstripe\Forms\HtmlEditor\HtmlEditorField_Toolbar;
 use Silverstripe\Forms\HtmlEditor\HtmlEditorField;
 use Silverstripe\Control\Controller;
-use Codesipro\DataObjectAsPage\Forms\VersionedGridFieldDetailForm_ItemRequest;
+use arambalakjian\DataObjectAsPage\Forms\VersionedGridFieldDetailForm_ItemRequest;
 
 
 class DataObjectAsPageAdmin extends ModelAdmin

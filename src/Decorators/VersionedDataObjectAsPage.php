@@ -1,6 +1,6 @@
 <?php
 
-namespace Codesipro\DataObjectAsPage\Decorators;
+namespace arambalakjian\DataObjectAsPage\Decorators;
 
 use Silverstripe\ORM\DataExtension;
 

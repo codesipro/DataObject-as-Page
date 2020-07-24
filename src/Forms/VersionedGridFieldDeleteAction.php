@@ -1,6 +1,6 @@
 <?php
 
-namespace Codesipro\DataObjectAsPage\Forms;
+namespace arambalakjian\DataObjectAsPage\Forms;
 
 use Silverstripe\Forms\Gridfield\GridFieldDeleteAction;
 use Silverstripe\Forms\Gridfield\GridField;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Codesipro\DataObjectAsPage\DataObjects;
+namespace arambalakjian\DataObjectAsPage\DataObjects;
 
 use Silverstripe\ORM\DataObject;
 use Silverstripe\Security\Member;
@@ -21,8 +21,8 @@ use Silverstripe\Core\Convert;
 use Silverstripe\Control\ContentNegotiator;
 use Silverstripe\ORM\DB;
 use Silverstripe\View\Parsers\URLSegmentFilter;
-use Codesipro\DataObjectAsPage\Pages\DataObjectAsPageHolder;
-use Codesipro\DataObjectAsPage\Decorators\VersionedDataObjectAsPage;
+use arambalakjian\DataObjectAsPage\Pages\DataObjectAsPageHolder;
+use arambalakjian\DataObjectAsPage\Decorators\VersionedDataObjectAsPage;
 
 /*
  * Base class for DataObjects that behave like pages
