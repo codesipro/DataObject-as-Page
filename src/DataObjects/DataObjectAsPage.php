@@ -245,7 +245,7 @@ class DataObjectAsPage extends DataObject
             $urlsegment = new SiteTreeURLSegmentField("URLSegment", $this->fieldLabel('URLSegment'));
 
             if($this->getListingPage()) {
-                $prefix = $this->getListingPage()->AbsoluteLink('show').'/';
+                $prefix = $this->getListingPage()->absoluteLink('show').'/';
             } else {
                 $prefix = Director::absoluteBaseURL() . 'listing-page/show/';
             }
@@ -422,11 +422,11 @@ class DataObjectAsPage extends DataObject
      * @param string $action Optional URL action to append
      * @return string The absolute link
      */
-    public function AbsoluteLink($action = null)
+    public function absoluteLink($action = null)
     {
         if($listingPage = $this->getListingPage())
         {
-            return Controller::join_links($listingPage->AbsoluteLink(), 'show', $this->URLSegment, $action);
+            return Controller::join_links($listingPage->absoluteLink(), 'show', $this->URLSegment, $action);
         }
     }
 
