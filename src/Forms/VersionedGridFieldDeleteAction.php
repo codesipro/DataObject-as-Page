@@ -2,11 +2,9 @@
 
 namespace Codesipro\DataObjectAsPage\Forms;
 
-use GridFieldDeleteAction;
-use GridField;
-use ValidationException;
-
-
+use Silverstripe\Forms\Gridfield\GridFieldDeleteAction;
+use Silverstripe\Forms\Gridfield\GridField;
+use Silverstripe\ORM\ValidationException;
 
 class VersionedGridFieldDeleteAction extends GridFieldDeleteAction
 {
@@ -31,6 +29,6 @@ class VersionedGridFieldDeleteAction extends GridFieldDeleteAction
 			if($actionName == 'deleterecord') {
 				$item->doDelete();
 			}
-		} 
-	}	
+		}
+	}
 }
