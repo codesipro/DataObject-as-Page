@@ -7,6 +7,7 @@ use Silverstripe\Versioned\Versioned;
 use Silverstripe\View\Requirements;
 use arambalakjian\DataObjectAsPage\Forms\VersionedGridFieldDeleteAction;
 use Silverstripe\Forms\HtmlEditor\HtmlEditorField_Toolbar;
+use SilverStripe\Admin\ModalController;
 use Silverstripe\Forms\HtmlEditor\HtmlEditorField;
 use Silverstripe\Control\Controller;
 use arambalakjian\DataObjectAsPage\Forms\VersionedGridFieldDetailForm_ItemRequest;
@@ -52,7 +53,7 @@ class DataObjectAsPageAdmin extends ModelAdmin
 /*
  * Temporary Fix for HTML editor Image/Link popup
  */
-class ModelAdminHtmlEditorField_Toolbar extends HtmlEditorField_Toolbar {
+class ModelAdminHtmlEditorField_Toolbar extends ModalController {
 
    public function forTemplate() {
       return sprintf(
