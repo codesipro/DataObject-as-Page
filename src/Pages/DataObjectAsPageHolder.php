@@ -6,10 +6,12 @@ use Silverstripe\Forms\HeaderField;
 use Silverstripe\Forms\CheckboxField;
 use Silverstripe\Forms\NumericField;
 use Silverstripe\Control\Controller;
+use Codesipro\DataObjectAsPage\Pages\DataObjectAsPageHolder;
+
 
 class DataObjectAsPageHolder extends \Page
 {
-    private static $hide_ancestor = 'DataObjectAsPageHolder';
+    private static $hide_ancestor = DataObjectAsPageHolder::class;
 
     private static $db = array(
         'ItemsPerPage' => 'Int',

@@ -9,6 +9,8 @@ use Codesipro\DataObjectAsPage\Forms\VersionedGridFieldDeleteAction;
 use Silverstripe\Forms\HtmlEditor\HtmlEditorField_Toolbar;
 use Silverstripe\Forms\HtmlEditor\HtmlEditorField;
 use Silverstripe\Control\Controller;
+use Codesipro\DataObjectAsPage\Forms\VersionedGridFieldDetailForm_ItemRequest;
+
 
 class DataObjectAsPageAdmin extends ModelAdmin
 {
@@ -37,7 +39,7 @@ class DataObjectAsPageAdmin extends ModelAdmin
 			$gridFieldConfig = $listfield->getConfig();
 
 		    $gridFieldConfig->getComponentByType('GridFieldDetailForm')
-		        ->setItemRequestClass('VersionedGridFieldDetailForm_ItemRequest');
+		        ->setItemRequestClass(VersionedGridFieldDetailForm_ItemRequest::class);
 
 			$gridFieldConfig->removeComponentsByType('GridFieldDeleteAction');
 			$gridFieldConfig->addComponent(new VersionedGridFieldDeleteAction());

@@ -6,11 +6,13 @@ use Silverstripe\ORM\PaginatedList;
 use Silverstripe\Core\Convert;
 use Silverstripe\Security\Security;
 use Silverstripe\View\ArrayData;
+use Codesipro\DataObjectAsPage\DataObjects\DataObjectAsPage;
+
 
 class DataObjectAsPageHolderController extends \PageController
 {
 	//Class Of Object Listied on this page
-	private static $item_class = 'DataObjectAsPage';
+	private static $item_class = DataObjectAsPage::class;
 	private static $item_sort = 'Created DESC';
 
 	private static $allowed_actions = array(

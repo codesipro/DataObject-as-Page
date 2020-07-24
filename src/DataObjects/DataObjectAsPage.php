@@ -21,6 +21,10 @@ use Silverstripe\Core\Convert;
 use Silverstripe\Control\ContentNegotiator;
 use Silverstripe\ORM\DB;
 use Silverstripe\View\Parsers\URLSegmentFilter;
+use Codesipro\DataObjectAsPage\Pages\DataObjectAsPageHolder;
+use Codesipro\DataObjectAsPage\DataObjects\DataObjectAsPage;
+use Codesipro\DataObjectAsPage\Decorators\VersionedDataObjectAsPage;
+
 
 /*
  * Base class for DataObjects that behave like pages
@@ -31,7 +35,7 @@ class DataObjectAsPage extends DataObject {
 	/**
 	 * @var define the listing page class name
 	 */
-	private static $listing_page_class = 'DataObjectAsPageHolder';
+	private static $listing_page_class = DataObjectAsPageHolder::class;
 
 	private static $db = array (
 		'URLSegment' => 'Varchar(100)',
@@ -267,8 +271,8 @@ class DataObjectAsPage extends DataObject {
 	 */
 	public static function enable_versioning()
 	{
-	  	DataObject::add_extension('DataObjectAsPage','VersionedDataObjectAsPage');
-		DataObject::add_extension('DataObjectAsPage',"Versioned('Stage', 'Live')");
+	  	DataObject::add_extension(DataObjectAsPage::class,VersionedDataObjectAsPage::class);
+		DataObject::add_extension(DataObjectAsPage::class,"Versioned('Stage', 'Live')");
 	}
 
 	/**
@@ -365,8 +369,8 @@ class DataObjectAsPage extends DataObject {
 	 */
 	public function hasChangesOnStage()
 	{
-		$latestPublishedVersion = $this->get_versionnumber_by_stage('DataObjectAsPage', 'Live', $this->ID);
-		$latestVersion = $this->get_versionnumber_by_stage('DataObjectAsPage', 'Stage', $this->ID);
+		$latestPublishedVersion = $this->get_versionnumber_by_stage(DataObjectAsPage::class, 'Live', $this->ID);
+		$latestVersion = $this->get_versionnumber_by_stage(DataObjectAsPage::class, 'Stage', $this->ID);
 
 		return ($latestPublishedVersion < $latestVersion);
 	}
