@@ -212,8 +212,8 @@ class VersionedGridFieldDetailForm_ItemRequest extends GridFieldDetailForm_ItemR
 		if($record && !$record->canPublish())
 			return Security::permissionFailure($this);
 
-		$origStage = Versioned::current_stage();
-		Versioned::reading_stage('Live');
+		$origStage = Versioned::get_stage();
+		Versioned::set_stage('Live');
 
 		// This way our ID won't be unset
 		$clone = clone $record;
@@ -291,14 +291,14 @@ class VersionedGridFieldDetailForm_ItemRequest extends GridFieldDetailForm_ItemR
 			if(method_exists($conn, 'allowPrimaryKeyEditing')) $conn->allowPrimaryKeyEditing($record->class, false);
 		}
 
-		$oldStage = Versioned::current_stage();
-		Versioned::reading_stage('Stage');
+		$oldStage = Versioned::get_stage();
+		Versioned::set_stage('Stage');
 		$record->forceChange();
 		$record->write();
 
 		$result = DataObject::get_by_id($this->class, $this->ID);
 
-		Versioned::reading_stage($oldStage);
+		Versioned::set_stage($oldStage);
 
 		return $result;
 	}
@@ -368,6 +368,4 @@ class VersionedGridFieldDetailForm_ItemRequest extends GridFieldDetailForm_ItemR
 
 		return ($stageVersion && !$liveVersion);
 	}
-
-
 }

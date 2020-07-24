@@ -124,7 +124,7 @@ class DataObjectAsPage extends DataObject
 
         //If this is draft check for permissions to view draft content
         //getSearchResultItem is needed to ensure unpublished items don't show up in search results
-        if($this->isVersioned && Versioned::current_stage() == 'Stage' && $this->Status == 'Draft')
+        if($this->isVersioned && Versioned::get_stage() == 'Stage' && $this->Status == 'Draft')
         {
             return Permission::checkMember($member,'VIEW_DRAFT_CONTENT');
         }

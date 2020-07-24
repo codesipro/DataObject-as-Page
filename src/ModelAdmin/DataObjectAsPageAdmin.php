@@ -20,7 +20,7 @@ class DataObjectAsPageAdmin extends ModelAdmin
 
         //if versioned we need to tell ModelAdmin to read from stage
         if (Singleton($this->modelClass)->isVersioned) {
-            Versioned::reading_stage('Stage');
+            Versioned::set_stage('Stage');
         }
         //Styling for preview links and status
         Requirements::CSS(MOD_DOAP_DIR . '/css/dataobjectaspageadmin.css');
