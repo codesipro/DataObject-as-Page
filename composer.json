@@ -1,8 +1,10 @@
 {
 	"name": "codesipro/dataobjectaspage",
-	"replace": {"silverstripe/dataobjectaspage": "*"},
+	"replace": {
+    	"silverstripe/dataobjectaspage": "*"
+    },
 	"description": "Manage DataObjects through model admin but display them as pages on the site",
-	"type": "silverstripe-module",
+	"type": "silverstripe-vendormodule",
 	"keywords": ["silverstripe", "dataobjectasapage"],
 	"authors": [
 	{
