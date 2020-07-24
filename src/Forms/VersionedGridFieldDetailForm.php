@@ -24,12 +24,12 @@ use Silverstripe\ORM\DataObject;
  * @author Tim Klein, Dodat Ltd <tim[at]dodat[dot]co[dot]nz>
  */
 
-class VersionedGridFieldDetailForm extends GridFieldDetailForm {
-
+class VersionedGridFieldDetailForm extends GridFieldDetailForm
+{
 }
 
-class VersionedGridFieldDetailForm_ItemRequest extends GridFieldDetailForm_ItemRequest {
-
+class VersionedGridFieldDetailForm_ItemRequest extends GridFieldDetailForm_ItemRequest
+{
     private static $allowed_actions = [
         'edit',
         'view',
@@ -119,7 +119,6 @@ class VersionedGridFieldDetailForm_ItemRequest extends GridFieldDetailForm_ItemR
         $minorActions = CompositeField::create()->setTag('fieldset')->addExtraClass('ss-ui-buttonset');
         $actions = new FieldList($minorActions);
 
-
         $this->IsDeletedFromStage = $this->getIsDeletedFromStage();
         $this->ExistsOnLive = $this->getExistsOnLive();
 
@@ -133,7 +132,7 @@ class VersionedGridFieldDetailForm_ItemRequest extends GridFieldDetailForm_ItemR
         }
 
         if ($this->stagesDiffer('Stage', 'Live') && !$this->IsDeletedFromStage) {
-            if ($this->isPublished() && $this->canEdit())	{
+            if ($this->isPublished() && $this->canEdit()) {
                 // "rollback"
                 $minorActions->push(
                     FormAction::create('doRollback', 'Cancel draft changes')
@@ -259,7 +258,7 @@ class VersionedGridFieldDetailForm_ItemRequest extends GridFieldDetailForm_ItemR
             if (!$record->canDelete()) {
                 throw new ValidationException(_t('GridFieldDetailForm.DeletePermissionsFailure',"No delete permissions"),0);
             }
-        } catch(ValidationException $e) {
+        } catch (ValidationException $e) {
             $form->sessionMessage($e->getResult()->message(), 'bad');
             return Controller::curr()->redirectBack();
         }

@@ -44,31 +44,23 @@ class DataObjectAsPageHolder extends \Page
     {
         $results = $itemClass::get();
 
-        if($filter)
-        {
-            if(is_array($filter))
-            {
-                foreach($filter as $key => $value)
-                {
-                    if($key == "filterany" || $key == "filter" || $key == "where")
-                    {
+        if ($filter) {
+            if (is_array($filter)) {
+                foreach ($filter as $key => $value) {
+                    if ($key == "filterany" || $key == "filter" || $key == "where") {
                         $results = $results->$key($value);
                     }
                 }
-            }
-            else
-            {
+            } else {
                 $results = $results->filter($filter);
             }
         }
 
-        if($sort)
-        {
+        if ($sort) {
             $results = $results->sort($sort);
         }
 
-        if($limit)
-        {
+        if ($limit) {
             $results = $results->limit($limit);
         }
 
@@ -80,17 +72,14 @@ class DataObjectAsPageHolder extends \Page
      */
     public function onBeforeDelete()
     {
-        if($this->ItemsAsChildren)
-        {
+        if ($this->ItemsAsChildren) {
             $CurrentVal = $this->get_enforce_strict_hierarchy();
             $this->set_enforce_strict_hierarchy(false);
 
             parent::onBeforeDelete();
 
             $this->set_enforce_strict_hierarchy($CurrentVal);
-        }
-        else
-        {
+        } else {
              parent::onBeforeDelete();
         }
     }
@@ -100,12 +89,9 @@ class DataObjectAsPageHolder extends \Page
      */
     public function Children()
     {
-        if($this->ItemsAsChildren && (Controller::curr() instanceof DataObjectAsPageHolderController))
-        {
+        if ($this->ItemsAsChildren && (Controller::curr() instanceof DataObjectAsPageHolderController)) {
             return Controller::curr()->Items();
-        }
-        else
-        {
+        } else {
             return parent::Children();
         }
     }

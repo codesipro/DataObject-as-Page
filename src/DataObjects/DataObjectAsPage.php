@@ -63,7 +63,9 @@ class DataObjectAsPage extends DataObject
     private static $indexes = [
         'URLSegment' => [
             'type' => 'unique',
-            'columns' => ['URLSegment']
+            'columns' => [
+                'URLSegment'
+            ]
         ]
     ];
 
@@ -84,8 +86,7 @@ class DataObjectAsPage extends DataObject
      */
     public function getMetaTitle()
     {
-        if ($value = $this->getField('MetaTitle'))
-        {
+        if ($value = $this->getField('MetaTitle')) {
             return $value;
         }
         return $this->getField('Title');
@@ -97,12 +98,9 @@ class DataObjectAsPage extends DataObject
      * @param string $value The value for the MetaTitle field
      */
     public function setMetaTitle($value) {
-        if ($value == $this->getField('Title'))
-        {
+        if ($value == $this->getField('Title')) {
             $this->setField('MetaTitle', null);
-        }
-        else
-        {
+        } else {
             $this->setField('MetaTitle', $value);
         }
     }
@@ -116,20 +114,17 @@ class DataObjectAsPage extends DataObject
     public function canView($member = null)
     {
         //if no member was supplied assume current member
-        if(!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Member::currentUser();
+        if (!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Member::currentUser();
 
         // Standard mechanism for accepting permission changes from extensions
         $extended = $this->extendedCan('canView', $member);
-        if($extended !==null) return $extended;
+        if ($extended !==null) return $extended;
 
         //If this is draft check for permissions to view draft content
         //getSearchResultItem is needed to ensure unpublished items don't show up in search results
-        if($this->isVersioned && Versioned::get_stage() == 'Stage' && $this->Status == 'Draft')
-        {
+        if ($this->isVersioned && Versioned::get_stage() == 'Stage' && $this->Status == 'Draft') {
             return Permission::checkMember($member,'VIEW_DRAFT_CONTENT');
-        }
-        elseif(Controller::curr()->hasMethod("canView"))
-        {
+        } elseif (Controller::curr()->hasMethod("canView")) {
             //Otherwise return the parent listing pages view permission
             return Controller::curr()->canView($member);
         }
@@ -144,13 +139,13 @@ class DataObjectAsPage extends DataObject
      */
     public function canPublish($member = null)
     {
-        if(!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Member::currentUser();
+        if (!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Member::currentUser();
 
-        if($member && Permission::checkMember($member, "ADMIN")) return true;
+        if ($member && Permission::checkMember($member, "ADMIN")) return true;
 
         // Standard mechanism for accepting permission changes from extensions
         $extended = $this->extendedCan('canPublish', $member);
-        if($extended !== null) return $extended;
+        if ($extended !== null) return $extended;
 
         // Normal case - fail over to canEdit()
         return $this->canEdit($member);
@@ -165,11 +160,11 @@ class DataObjectAsPage extends DataObject
     public function canDeleteFromLive($member = null)
     {
         //if no member was supplied assume current member
-        if(!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Member::currentUser();
+        if (!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Member::currentUser();
 
         // Standard mechanism for accepting permission changes from extensions
         $extended = $this->extendedCan('canDeleteFromLive', $member);
-        if($extended !==null) return $extended;
+        if ($extended !==null) return $extended;
 
         return $this->canPublish($member);
     }

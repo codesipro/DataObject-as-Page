@@ -25,7 +25,7 @@ class DataObjectAsPageHolderController extends \PageController
     public function Items($limit = null)
     {
         //Set custom filter
-        $where = ($this->hasMethod('getItemsWhere')) ? $this->getItemsWhere() : Null;
+        $where = ($this->hasMethod('getItemsWhere')) ? $this->getItemsWhere() : null;
 
         //Set custom sort
         $sort = ($this->hasMethod('getItemsSort')) ? $this->getItemsSort() : $this->stat('item_sort');
@@ -34,8 +34,7 @@ class DataObjectAsPageHolderController extends \PageController
         $items = $this->FetchItems($this->Stat('item_class'), $where, $sort, $limit);
 
         //Paginate the list
-        if(!$limit && $this->Paginate)
-        {
+        if (!$limit && $this->Paginate) {
             $items = new PaginatedList($items, $this->request);
             $items->setPageLength($this->ItemsPerPage);
         }
@@ -53,13 +52,9 @@ class DataObjectAsPageHolderController extends \PageController
         $params = $this->request->allParams();
         $class =  $this->stat('item_class');
 
-        if($itemID)
-        {
+        if ($itemID) {
             $item = $class::get()->byID($itemID);
-
-        }
-        elseif(isset($params['ID']))
-        {
+        } elseif (isset($params['ID'])) {
             //Sanitize
             $URL = Convert::raw2sql($params['ID']);
 
@@ -76,10 +71,8 @@ class DataObjectAsPageHolderController extends \PageController
      */
     public function show()
     {
-        if($item = $this->getCurrentItem())
-        {
-            if ($item->canView())
-            {
+        if ($item = $this->getCurrentItem()) {
+            if ($item->canView()) {
                 $data = [
                     'Item' => $item,
                     'Breadcrumbs' => $item->Breadcrumbs(),
@@ -88,14 +81,10 @@ class DataObjectAsPageHolderController extends \PageController
                 ];
 
                 return $this->customise(new ArrayData($data));
-            }
-            else
-            {
+            } else {
                 return Security::permissionFailure($this);
             }
-        }
-        else
-        {
+        } else {
             return $this->httpError(404);
         }
     }
