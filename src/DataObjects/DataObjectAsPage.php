@@ -333,7 +333,7 @@ class DataObjectAsPage extends DataObject
 
         $tags .= "<meta name=\"generator\" content=\"SilverStripe - http://silverstripe.org\" />\n";
 
-        $charset = ContentNegotiator::class->config('encoding');
+        $charset = ContentNegotiator::config()->get('encoding');
         $tags .= "<meta http-equiv=\"Content-type\" content=\"text/html; charset=$charset\" />\n";
 
         if($this->MetaDescription) {
