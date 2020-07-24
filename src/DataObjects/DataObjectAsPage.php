@@ -61,7 +61,7 @@ class DataObjectAsPage extends DataObject
     private static $indexes = [
         'URLSegment' => [
             'type' => 'unique',
-            'columns' => 'URLSegment'
+            'columns' => ['URLSegment']
         ]
     ];
 
