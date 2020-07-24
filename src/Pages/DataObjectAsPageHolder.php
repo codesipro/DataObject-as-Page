@@ -6,8 +6,6 @@ use Silverstripe\Forms\HeaderField;
 use Silverstripe\Forms\CheckboxField;
 use Silverstripe\Forms\NumericField;
 use Silverstripe\Control\Controller;
-use Codesipro\DataObjectAsPage\Pages\DataObjectAsPageHolder;
-
 
 class DataObjectAsPageHolder extends \Page
 {

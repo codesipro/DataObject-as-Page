@@ -14,11 +14,10 @@
 	],
 	"require":
 	{
-        "silverstripe/cms": "^4.0.*",
-		"silverstripe/framework": "^4.0.*",
+        "silverstripe/cms": "^4.0",
+		"silverstripe/framework": "^4.0",
         "silverstripe/vendor-plugin": "^1"
-
-	}
+	},
 
 	"autoload": {
         "psr-4": {
