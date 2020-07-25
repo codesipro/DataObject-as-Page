@@ -401,10 +401,10 @@ class DataObjectAsPage extends DataObject
      * @param string $action Optional URL action to append
      * @return string The absolute link
      */
-    public function absoluteLink($action = null)
+    public function AbsoluteLink($action = null)
     {
         if ($listingPage = $this->getListingPage()) {
-            return Controller::join_links($listingPage->absoluteLink(), 'show', $this->URLSegment, $action);
+            return Controller::join_links($listingPage->AbsoluteLink(), 'show', $this->URLSegment, $action);
         }
     }
 
