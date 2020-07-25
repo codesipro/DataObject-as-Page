@@ -97,7 +97,8 @@ class DataObjectAsPage extends DataObject
      *
      * @param string $value The value for the MetaTitle field
      */
-    public function setMetaTitle($value) {
+    public function setMetaTitle($value)
+    {
         if ($value == $this->getField('Title')) {
             $this->setField('MetaTitle', null);
         } else {
@@ -179,35 +180,28 @@ class DataObjectAsPage extends DataObject
         $fields = parent::getCMSFields();
 
         //Add the status/view link
-        if($this->ID)
-        {
-            if($this->isVersioned)
-            {
+        if ($this->ID) {
+            if ($this->isVersioned) {
                 $status = $this->getStatus();
-
                 $color = '#E88F31';
                 $links = sprintf(
                     "<a target=\"_blank\" class=\"ss-ui-button\" data-icon=\"preview\" href=\"%s\">%s</a>", $this->Link() . '?stage=Stage', 'Draft'
                 );
 
-                if($status == 'Published')
-                {
+                if ($status == 'Published') {
                     $color = '#000';
                     $links .= sprintf(
                         "<a target=\"_blank\" class=\"ss-ui-button\" data-icon=\"preview\" href=\"%s\">%s</a>", $this->Link() . '?stage=Live', 'Published'
                     );
 
-                    if($this->hasChangesOnStage())
-                    {
+                    if ($this->hasChangesOnStage()) {
                         $status .= ' (changed)';
                         $color = '#428620';
                     }
                 }
 
                 $statusPill = '<h3 class="doapTitle" style="background: '.$color.';">'. $status . '</h3>';
-            }
-            else
-            {
+            } else {
                 $links = sprintf(
                     "<a target=\"_blank\" class=\"ss-ui-button\" data-icon=\"preview\" href=\"%s\">%s</a>", $this->Link() . '?stage=Stage', 'View'
                 );
@@ -235,11 +229,10 @@ class DataObjectAsPage extends DataObject
 
         $fields->addFieldToTab('Root.Main', new TextField('Title'));
 
-        if($this->ID)
-        {
+        if ($this->ID) {
             $urlsegment = new SiteTreeURLSegmentField("URLSegment", $this->fieldLabel('URLSegment'));
 
-            if($this->getListingPage()) {
+            if ($this->getListingPage()) {
                 $prefix = $this->getListingPage()->absoluteLink('show').'/';
             } else {
                 $prefix = Director::absoluteBaseURL() . 'listing-page/show/';
@@ -254,10 +247,10 @@ class DataObjectAsPage extends DataObject
         $fields->addFieldToTab('Root.Main', new HTMLEditorField('Content'));
 
         $fields->addFieldToTab('Root.Main',new ToggleCompositeField('Metadata', 'Metadata',
-            array(
+            [
                 new TextField("MetaTitle", $this->fieldLabel('MetaTitle')),
                 new TextareaField("MetaDescription", $this->fieldLabel('MetaDescription'))
-            )
+            ]
         ));
 
         //$fields->push(new HiddenField('PreviewURL', 'Preview URL', $this->StageLink()));
@@ -291,16 +284,15 @@ class DataObjectAsPage extends DataObject
     public function Breadcrumbs($maxDepth = 20, $unlinked = false, $stopAtPageType = false, $showHidden = false)
     {
         $page = Controller::curr();
-        $pages = array();
+        $pages = [];
 
         $pages[] = $this;
 
-        while(
-            $page
+        while ($page
             && (!$maxDepth || count($pages) < $maxDepth)
             && (!$stopAtPageType || $page->ClassName != $stopAtPageType)
         ) {
-            if($showHidden || $page->ShowInMenus || ($page->ID == $this->ID)) {
+            if ($showHidden || $page->ShowInMenus || ($page->ID == $this->ID)) {
                 $pages[] = $page;
             }
 
@@ -309,9 +301,9 @@ class DataObjectAsPage extends DataObject
 
         $template = new SSViewer('BreadcrumbsTemplate');
 
-        return $template->process($this->customise(new ArrayData(array(
+        return $template->process($this->customise(new ArrayData([
             'Pages' => new ArrayList(array_reverse($pages))
-        ))));
+        ])));
     }
 
     /**
@@ -320,7 +312,7 @@ class DataObjectAsPage extends DataObject
     public function MetaTags($includeTitle = true)
     {
         $tags = "";
-        if($includeTitle === true || $includeTitle == 'true') {
+        if ($includeTitle === true || $includeTitle == 'true') {
             $tags .= "<title>" . Convert::raw2xml(($this->MetaTitle)
                 ? $this->MetaTitle
                 : $this->Title) . "</title>\n";
@@ -331,7 +323,7 @@ class DataObjectAsPage extends DataObject
         $charset = ContentNegotiator::config()->get('encoding');
         $tags .= "<meta http-equiv=\"Content-type\" content=\"text/html; charset=$charset\" />\n";
 
-        if($this->MetaDescription) {
+        if ($this->MetaDescription) {
             $tags .= "<meta name=\"description\" content=\"" . Convert::raw2att($this->MetaDescription) . "\" />\n";
         }
 
@@ -342,12 +334,9 @@ class DataObjectAsPage extends DataObject
 
     public function getStatus()
     {
-        if($this->isVersioned)
-        {
+        if ($this->isVersioned) {
             return $this->isPublished() ? "Published" : "Draft";
-        }
-        else
-        {
+        } else {
             return "Published (Staging disabled)";
         }
     }
@@ -501,7 +490,7 @@ class DataObjectAsPage extends DataObject
         $t = $filter->filter($title);
 
         // Fallback to generic page name if path is empty (= no valid, convertable characters)
-        if(!$t || $t == '-' || $t == '-1') $t = "page-$this->ID";
+        if (!$t || $t == '-' || $t == '-1') $t = "page-$this->ID";
 
         // Hook for extensions
         $this->extend('updateURLSegment', $t, $title);
