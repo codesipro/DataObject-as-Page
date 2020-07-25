@@ -28,10 +28,10 @@ class DataObjectAsPageHolderController extends \PageController
         $where = ($this->hasMethod('getItemsWhere')) ? $this->getItemsWhere() : null;
 
         //Set custom sort
-        $sort = ($this->hasMethod('getItemsSort')) ? $this->getItemsSort() : $this->stat('item_sort');
+        $sort = ($this->hasMethod('getItemsSort')) ? $this->getItemsSort() : $this->config()->get('item_sort');
 
         //QUERY
-        $items = $this->FetchItems($this->Stat('item_class'), $where, $sort, $limit);
+        $items = $this->FetchItems($this->config()->get('item_class'), $where, $sort, $limit);
 
         //Paginate the list
         if (!$limit && $this->Paginate) {
@@ -50,7 +50,7 @@ class DataObjectAsPageHolderController extends \PageController
     public function getCurrentItem($itemID = null)
     {
         $params = $this->request->allParams();
-        $class =  $this->stat('item_class');
+        $class =  $this->config()->get('item_class');
 
         if ($itemID) {
             $item = $class::get()->byID($itemID);

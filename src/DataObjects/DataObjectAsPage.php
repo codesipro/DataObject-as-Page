@@ -369,7 +369,7 @@ class DataObjectAsPage extends DataObject
      */
     public function getListingPage()
     {
-        $listingClass = $this->stat('listing_page_class');
+        $listingClass = $this->config()->get('listing_page_class');
         $controllerClass =  $listingClass . "Controller";
 
         if (Controller::curr() instanceof $controllerClass) {
@@ -413,7 +413,7 @@ class DataObjectAsPage extends DataObject
      */
     public function LinkingMode()
     {
-        $listingClass = $this->stat('listing_page_class');
+        $listingClass = $this->config()->get('listing_page_class');
         //Check that we have a controller to work with and that it is a listing page
         if (($controller = Controller::Curr()) && (Controller::curr() instanceof $listingClass)) {
             //check that the action is 'show' and that we have an item to work with
