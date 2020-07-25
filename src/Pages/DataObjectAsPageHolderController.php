@@ -49,7 +49,7 @@ class DataObjectAsPageHolderController extends \PageController
     public function getCurrentItem($itemID = null)
     {
         $params = $this->request->allParams();
-        $class =  $this->config()->get('item_class');
+        $class = $this->config()->get('item_class');
 
         if ($itemID) {
             $item = $class::get()->byID($itemID);
@@ -57,7 +57,7 @@ class DataObjectAsPageHolderController extends \PageController
             //Sanitize
             $URL = Convert::raw2sql($params['ID']);
 
-            $item = $class::get()->filter("URLSegment", $URL)->first();
+            $item = $class::get()->filter('URLSegment', $URL)->first();
         }
         $this->extend('updateCurrentItem', $item);
         return $item;
