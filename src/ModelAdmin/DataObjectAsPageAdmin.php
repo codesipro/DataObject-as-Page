@@ -11,7 +11,6 @@ use arambalakjian\DataObjectAsPage\Forms\VersionedGridFieldDetailForm_ItemReques
 
 class DataObjectAsPageAdmin extends ModelAdmin
 {
-
     private static $url_segment = 'URLSegment';
 
     public function init()

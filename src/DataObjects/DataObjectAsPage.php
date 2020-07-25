@@ -264,7 +264,7 @@ class DataObjectAsPage extends DataObject
      */
     public static function enable_versioning()
     {
-        DataObject::add_extension(DataObjectAsPage::class,VersionedDataObjectAsPage::class);
+        DataObject::add_extension(DataObjectAsPage::class, VersionedDataObjectAsPage::class);
         //DataObject::add_extension(DataObjectAsPage::class,"Versioned('Stage', 'Live')");
     }
 

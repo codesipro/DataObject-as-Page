@@ -8,7 +8,6 @@ use Silverstripe\Security\Security;
 use Silverstripe\View\ArrayData;
 use arambalakjian\DataObjectAsPage\DataObjects\DataObjectAsPage;
 
-
 class DataObjectAsPageHolderController extends \PageController
 {
     //Class Of Object Listed on this page

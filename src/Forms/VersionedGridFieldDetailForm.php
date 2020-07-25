@@ -36,7 +36,8 @@ class VersionedGridFieldDetailForm_ItemRequest extends GridFieldDetailForm_ItemR
         'ItemEditForm'
     ];
 
-    public function isNew() {
+    public function isNew()
+    {
         /**
          * This check was a problem for a self-hosted site, and may indicate a
          * bug in the interpreter on their server, or a bug here
@@ -256,7 +257,7 @@ class VersionedGridFieldDetailForm_ItemRequest extends GridFieldDetailForm_ItemR
 
         try {
             if (!$record->canDelete()) {
-                throw new ValidationException(_t('GridFieldDetailForm.DeletePermissionsFailure',"No delete permissions"),0);
+                throw new ValidationException(_t('GridFieldDetailForm.DeletePermissionsFailure', "No delete permissions"),0);
             }
         } catch (ValidationException $e) {
             $form->sessionMessage($e->getResult()->message(), 'bad');
@@ -284,8 +285,6 @@ class VersionedGridFieldDetailForm_ItemRequest extends GridFieldDetailForm_ItemR
         DB::query("DELETE FROM \"{$this->baseTable()}_versions\" WHERE \"RecordID\" = '{$record->ID}'");
         return $controller->redirect($noActionURL, 302); //redirect back to admin section
     }
-
-
         /**
      * Restore the content in the active copy of this SiteTree page to the stage site.
      * @return The SiteTree object.
