@@ -378,17 +378,14 @@ class DataObjectAsPage extends DataObject
     /**
      * Get the listing page to view this Event on (used in Link functions below)
      */
-    public function getListingPage(){
-
+    public function getListingPage()
+    {
         $listingClass = $this->stat('listing_page_class');
-        $controllerClass =  $listingClass . "_Controller";
+        $controllerClass =  $listingClass . "Controller";
 
-        if(Controller::curr() instanceof $controllerClass)
-        {
+        if (Controller::curr() instanceof $controllerClass) {
             $listingPage = Controller::curr();
-        }
-        else
-        {
+        } else {
             $listingPage = $listingClass::get()->First();
         }
 
@@ -401,11 +398,9 @@ class DataObjectAsPage extends DataObject
     public function Link($action = null)
     {
         //Hack for search results
-        if($item = DataObjectAsPage::get()->byID($this->ID))
-        {
+        if ($item = DataObjectAsPage::get()->byID($this->ID)) {
             //Build link
-            if($listingPage = $item->getListingPage())
-            {
+            if ($listingPage = $item->getListingPage()) {
                 return Controller::join_links($listingPage->Link(), 'show', $item->URLSegment, $action);
             }
         }
@@ -419,8 +414,7 @@ class DataObjectAsPage extends DataObject
      */
     public function absoluteLink($action = null)
     {
-        if($listingPage = $this->getListingPage())
-        {
+        if ($listingPage = $this->getListingPage()) {
             return Controller::join_links($listingPage->absoluteLink(), 'show', $this->URLSegment, $action);
         }
     }
@@ -432,11 +426,9 @@ class DataObjectAsPage extends DataObject
     {
         $listingClass = $this->stat('listing_page_class');
         //Check that we have a controller to work with and that it is a listing page
-        if(($controller = Controller::Curr()) && (Controller::curr() instanceof $listingClass))
-        {
+        if (($controller = Controller::Curr()) && (Controller::curr() instanceof $listingClass)) {
             //check that the action is 'show' and that we have an item to work with
-            if($controller->getAction() == 'show' && $item = $controller->getCurrentItem())
-            {
+            if ($controller->getAction() == 'show' && $item = $controller->getCurrentItem()) {
                 return ($item->ID == $this->ID) ? 'current' : 'link';
             }
         }
@@ -452,18 +444,15 @@ class DataObjectAsPage extends DataObject
         $defaults = $this->config()->defaults;
 
         // If there is no URLSegment set, generate one from Title
-        if((!$this->URLSegment || $this->URLSegment == $defaults['URLSegment']) && $this->Title != $defaults['Title'])
-        {
+        if ((!$this->URLSegment || $this->URLSegment == $defaults['URLSegment']) && $this->Title != $defaults['Title']) {
             $this->URLSegment = $this->generateURLSegment($this->Title);
-        }
-        else if($this->isChanged('URLSegment'))
-        {
+        } elseif ($this->isChanged('URLSegment')) {
             // Make sure the URLSegment is valid for use in a URL
             $segment = preg_replace('/[^A-Za-z0-9]+/','-',$this->URLSegment);
             $segment = preg_replace('/-+/','-',$segment);
 
             // If after sanitising there is no URLSegment, give it a reasonable default
-            if(!$segment) {
+            if (!$segment) {
                 $segment = "item-$this->ID";
             }
             $this->URLSegment = $segment;
@@ -475,7 +464,7 @@ class DataObjectAsPage extends DataObject
         $URLSegment = $this->URLSegment;
         $ID = $this->ID;
 
-        while($this->LookForExistingURLSegment($URLSegment, $ID))
+        while ($this->LookForExistingURLSegment($URLSegment, $ID))
         {
             $URLSegment = preg_replace('/-[0-9]+$/', null, $URLSegment) . '-' . $count;
             $count++;
