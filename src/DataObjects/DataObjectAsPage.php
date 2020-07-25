@@ -20,6 +20,7 @@ use Silverstripe\ORM\ArrayList;
 use Silverstripe\Core\Convert;
 use Silverstripe\Control\ContentNegotiator;
 use Silverstripe\ORM\DB;
+use Silverstripe\Security\Security;
 use Silverstripe\View\Parsers\URLSegmentFilter;
 use arambalakjian\DataObjectAsPage\Pages\DataObjectAsPageHolder;
 use arambalakjian\DataObjectAsPage\Decorators\VersionedDataObjectAsPage;
@@ -115,7 +116,7 @@ class DataObjectAsPage extends DataObject
     public function canView($member = null)
     {
         //if no member was supplied assume current member
-        if (!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Member::currentUser();
+        if (!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Security::getCurrentUser();
 
         // Standard mechanism for accepting permission changes from extensions
         $extended = $this->extendedCan('canView', $member);
@@ -140,7 +141,7 @@ class DataObjectAsPage extends DataObject
      */
     public function canPublish($member = null)
     {
-        if (!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Member::currentUser();
+        if (!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Security::getCurrentUser();
 
         if ($member && Permission::checkMember($member, "ADMIN")) return true;
 
@@ -161,7 +162,7 @@ class DataObjectAsPage extends DataObject
     public function canDeleteFromLive($member = null)
     {
         //if no member was supplied assume current member
-        if (!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Member::currentUser();
+        if (!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Security::getCurrentUser();
 
         // Standard mechanism for accepting permission changes from extensions
         $extended = $this->extendedCan('canDeleteFromLive', $member);
