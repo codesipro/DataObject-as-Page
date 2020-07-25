@@ -2,6 +2,7 @@
 
 namespace arambalakjian\DataObjectAsPage\Pages;
 
+use SilverStripe\CMS\Model\SiteTree;
 use Silverstripe\Forms\HeaderField;
 use Silverstripe\Forms\CheckboxField;
 use Silverstripe\Forms\NumericField;
@@ -73,12 +74,16 @@ class DataObjectAsPageHolder extends \Page
     public function onBeforeDelete()
     {
         if ($this->ItemsAsChildren) {
-            $CurrentVal = $this->get_enforce_strict_hierarchy();
-            $this->set_enforce_strict_hierarchy(false);
+            //$CurrentVal = $this->get_enforce_strict_hierarchy();
+            $CurrentVal = $this->config()->get('enforce_strict_hierarchy');
+
+            //$this->set_enforce_strict_hierarchy(false);
+            $this->config()->update('enforce_strict_hierarchy', false);
 
             parent::onBeforeDelete();
 
-            $this->set_enforce_strict_hierarchy($CurrentVal);
+            //$this->set_enforce_strict_hierarchy($CurrentVal);
+            $this->config()->update('enforce_strict_hierarchy', $CurrentVal);
         } else {
              parent::onBeforeDelete();
         }
