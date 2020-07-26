@@ -12,6 +12,8 @@ use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 
 class DataObjectAsPageAdmin extends ModelAdmin
 {
+    private static $url_segment = 'doapadmin';
+
     public function init()
     {
         parent::init();
@@ -21,7 +23,7 @@ class DataObjectAsPageAdmin extends ModelAdmin
             Versioned::set_stage('Stage');
         }
         //Styling for preview links and status
-        Requirements::CSS(MOD_DOAP_DIR . '/css/dataobjectaspageadmin.css');
+        Requirements::CSS('/vendor/arambalakjian/dataobjectaspage/css/dataobjectaspageadmin.css');
     }
 
     public function getEditForm($id = null, $fields = null)
