@@ -17,7 +17,6 @@ use Silverstripe\ORM\ValidationException;
 use Silverstripe\ORM\DataObject;
 use SilverStripe\ORM\CMSPreviewable;
 
-
 /**
  * VersionedGridFieldDetailForm & VersionedGridFieldDetailForm_ItemRequest
  * Allows managing versioned objects through gridfield.

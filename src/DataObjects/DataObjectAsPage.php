@@ -24,10 +24,6 @@ use Silverstripe\Security\Security;
 use Silverstripe\View\Parsers\URLSegmentFilter;
 use arambalakjian\DataObjectAsPage\Pages\DataObjectAsPageHolder;
 use arambalakjian\DataObjectAsPage\Decorators\VersionedDataObjectAsPage;
-use SilverStripe\Security\Member;
-use SilverStripe\Versioned\Versioned;
-use SilverStripe\Control\Controller;
-
 
 /*
  * Base class for DataObjects that behave like pages
