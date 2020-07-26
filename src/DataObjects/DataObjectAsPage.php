@@ -461,7 +461,6 @@ class DataObjectAsPage extends DataObject
         }
 
         $this->URLSegment = $URLSegment;
-
     }
 
     /**
