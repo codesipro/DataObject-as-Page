@@ -75,7 +75,7 @@ class DataObjectAsPageHolderController extends \PageController
                 $data = [
                     'Item' => $item,
                     'Breadcrumbs' => $item->Breadcrumbs(),
-                    'MetaTags' => $item->MetaTags(),
+                    'MetaComponents' => $item->MetaComponents(),
                     'BackLink' => base64_decode($this->request->getVar('backlink'))
                 ];
 

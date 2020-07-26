@@ -307,10 +307,9 @@ class DataObjectAsPage extends DataObject
         ])));
     }
 
-    /**
-     * Generate custom metatags to display on the DataObject Item page
-     */
-    public function MetaTags($includeTitle = true)
+
+    // Generate custom metatags to display on the DataObject Item page
+    public function MetaComponents($includeTitle = true)
     {
         $tags = "";
         if ($includeTitle === true || $includeTitle == 'true') {
@@ -319,7 +318,8 @@ class DataObjectAsPage extends DataObject
                 : $this->Title) . "</title>\n";
         }
 
-        $tags .= "<meta name=\"generator\" content=\"SilverStripe - http://silverstripe.org\" />\n";
+        // Silverstripe metatag removed.
+        //$tags .= "<meta name=\"generator\" content=\"SilverStripe - http://silverstripe.org\" />\n";
 
         $charset = ContentNegotiator::config()->get('encoding');
         $tags .= "<meta http-equiv=\"Content-type\" content=\"text/html; charset=$charset\" />\n";
@@ -328,7 +328,7 @@ class DataObjectAsPage extends DataObject
             $tags .= "<meta name=\"description\" content=\"" . Convert::raw2att($this->MetaDescription) . "\" />\n";
         }
 
-        $this->extend('MetaTags', $tags);
+        $this->extend('MetaComponents', $tags);
 
         return $tags;
     }
