@@ -290,7 +290,7 @@ class DataObjectAsPage extends DataObject
         $pages[] = $this;
 
         while ($page
-            && (!$maxDepth || count($pages) < $maxDepth)
+            && (!$maxDepth || count([$pages]) < $maxDepth)
             && (!$stopAtPageType || $page->ClassName != $stopAtPageType)
         ) {
             if ($showHidden || $page->ShowInMenus || ($page->ID == $this->ID)) {

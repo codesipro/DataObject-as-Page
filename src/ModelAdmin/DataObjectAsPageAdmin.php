@@ -6,15 +6,12 @@ use Silverstripe\Admin\ModelAdmin;
 use Silverstripe\Versioned\Versioned;
 use Silverstripe\View\Requirements;
 use arambalakjian\DataObjectAsPage\Forms\VersionedGridFieldDeleteAction;
-//use Silverstripe\Forms\HtmlEditor\HtmlEditorField_Toolbar;
 use arambalakjian\DataObjectAsPage\Forms\VersionedGridFieldDetailForm_ItemRequest;
 use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use SilverStripe\Forms\GridField\GridFieldDeleteAction;
 
 class DataObjectAsPageAdmin extends ModelAdmin
 {
-    private static $url_segment = 'URLSegment';
-
     public function init()
     {
         parent::init();
