@@ -24,6 +24,10 @@ use Silverstripe\Security\Security;
 use Silverstripe\View\Parsers\URLSegmentFilter;
 use arambalakjian\DataObjectAsPage\Pages\DataObjectAsPageHolder;
 use arambalakjian\DataObjectAsPage\Decorators\VersionedDataObjectAsPage;
+use SilverStripe\Security\Member;
+use SilverStripe\Versioned\Versioned;
+use SilverStripe\Control\Controller;
+
 
 /*
  * Base class for DataObjects that behave like pages
@@ -116,7 +120,7 @@ class DataObjectAsPage extends DataObject
     public function canView($member = null)
     {
         //if no member was supplied assume current member
-        if (!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Security::getCurrentUser();
+        if (!$member || !(is_a($member, Member::class)) || is_numeric($member)) $member = Security::getCurrentUser();
 
         // Standard mechanism for accepting permission changes from extensions
         $extended = $this->extendedCan('canView', $member);
@@ -141,7 +145,7 @@ class DataObjectAsPage extends DataObject
      */
     public function canPublish($member = null)
     {
-        if (!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Security::getCurrentUser();
+        if (!$member || !(is_a($member, Member::class)) || is_numeric($member)) $member = Security::getCurrentUser();
 
         if ($member && Permission::checkMember($member, "ADMIN")) return true;
 
@@ -162,7 +166,7 @@ class DataObjectAsPage extends DataObject
     public function canDeleteFromLive($member = null)
     {
         //if no member was supplied assume current member
-        if (!$member || !(is_a($member, 'Member')) || is_numeric($member)) $member = Security::getCurrentUser();
+        if (!$member || !(is_a($member, Member::class)) || is_numeric($member)) $member = Security::getCurrentUser();
 
         // Standard mechanism for accepting permission changes from extensions
         $extended = $this->extendedCan('canDeleteFromLive', $member);
@@ -276,7 +280,7 @@ class DataObjectAsPage extends DataObject
      */
     public function getisVersioned()
     {
-        return $this->hasExtension('Versioned');
+        return $this->hasExtension(Versioned::class);
     }
 
     /**
@@ -371,7 +375,7 @@ class DataObjectAsPage extends DataObject
     public function getListingPage()
     {
         $listingClass = $this->config()->get('listing_page_class');
-        $controllerClass =  $listingClass . "Controller";
+        $controllerClass =  $listingClass . Controller::class;
 
         if (Controller::curr() instanceof $controllerClass) {
             $listingPage = Controller::curr();

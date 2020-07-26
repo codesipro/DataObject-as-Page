@@ -15,6 +15,8 @@ use Silverstripe\Control\Controller;
 use Silverstripe\Versioned\Versioned;
 use Silverstripe\ORM\ValidationException;
 use Silverstripe\ORM\DataObject;
+use SilverStripe\ORM\CMSPreviewable;
+
 
 /**
  * VersionedGridFieldDetailForm & VersionedGridFieldDetailForm_ItemRequest
@@ -104,7 +106,7 @@ class VersionedGridFieldDetailForm_ItemRequest extends GridFieldDetailForm_ItemR
     public function canPreview()
     {
         $can = false;
-        $can = in_array('CMSPreviewable', class_implements($this->record));
+        $can = in_array(CMSPreviewable::class, class_implements($this->record));
         if (method_exists("canPreview", $this->record)) {
             $can = $this->record->canPreview();
         }

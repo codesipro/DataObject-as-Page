@@ -8,6 +8,9 @@ use Silverstripe\View\Requirements;
 use arambalakjian\DataObjectAsPage\Forms\VersionedGridFieldDeleteAction;
 use Silverstripe\Forms\HtmlEditor\HtmlEditorField_Toolbar;
 use arambalakjian\DataObjectAsPage\Forms\VersionedGridFieldDetailForm_ItemRequest;
+use SilverStripe\Forms\GridField\GridFieldDetailForm;
+use SilverStripe\Forms\GridField\GridFieldDeleteAction;
+
 
 class DataObjectAsPageAdmin extends ModelAdmin
 {
@@ -34,10 +37,10 @@ class DataObjectAsPageAdmin extends ModelAdmin
 
             $gridFieldConfig = $listfield->getConfig();
 
-            $gridFieldConfig->getComponentByType('GridFieldDetailForm')
+            $gridFieldConfig->getComponentByType(GridFieldDetailForm::class)
                 ->setItemRequestClass(VersionedGridFieldDetailForm_ItemRequest::class);
 
-            $gridFieldConfig->removeComponentsByType('GridFieldDeleteAction');
+            $gridFieldConfig->removeComponentsByType(GridFieldDeleteAction::class);
             $gridFieldConfig->addComponent(new VersionedGridFieldDeleteAction());
         }
 
