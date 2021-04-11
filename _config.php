@@ -8,11 +8,9 @@ unset($folders);
 
 /*
  * Add this line to your _config.php to enable versioning on your DataObjectAsPage classes.
- * 
+ *
  * Unfortunately this will to apply to all your DOAP classes as it needs to apply to the root DOAP class.
- * 
+ *
    DataObjectAsPage::enable_versioning();
- * 
+ *
  */
-
-
